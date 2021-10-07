@@ -3,6 +3,7 @@ import './App.css';
 import {TitleBar} from "./TitleBar/TitleBar";
 import {BookViewer} from "./BookViewer/BookViewer";
 import {BookCreator} from "./BookCreator/BookCreator";
+import {Footer} from "./Footer/Footer";
 
 export class App extends Component {
   constructor(props) {
@@ -43,6 +44,9 @@ export class App extends Component {
   createBook = (newBook) => {
     console.log("from the createbooks app", newBook)
     this.books.push(newBook);
+    this.setState({
+      bookNumber: this.books.length - 1
+    })
   }
 
   render(){
@@ -52,6 +56,7 @@ export class App extends Component {
         <TitleBar />
         <BookViewer book={this.books[this.state.bookNumber]} nextBook={this.goToNextBook} previousBook={this.goToPreviousBook}/>
         <BookCreator createNewBook={this.createBook}/>
+        <Footer />
 
 
       </div>
